@@ -5,7 +5,9 @@ const readline = require('readline').createInterface({
   
   readline.question('Enter a list of numbers separated by comma:\n', numbers => {
     let integers = numbers.split(',').map(x => parseInt(x) || 0);
-    let sum = integers.reduce((a, b) => a + b, 0);
+    let sum = integers
+      .filter(x => x <= 1000)
+      .reduce((a, b) => a + b, 0);
     console.log(`The sum of the entered numbers is ${sum}.`);
     readline.close();
   });
